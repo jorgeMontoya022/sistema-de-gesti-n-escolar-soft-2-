@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.proyectoingsoft2.controller.ReportesController">
+    <children>
+        <Label text="Reportes y Constancias" layoutX="20" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Button text="Volver al menú" layoutX="20" layoutY="60" onAction="#volverAlMenu"/>
+    </children>
+</AnchorPane>
