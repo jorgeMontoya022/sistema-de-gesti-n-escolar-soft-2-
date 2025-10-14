@@ -33,7 +33,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.MainApp.executor": "Run"
+    "Application.MainApp.executor": "Run",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -44,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760399006010</updated>
-      <workItem from="1760399008102" duration="910000" />
+      <workItem from="1760399008102" duration="1224000" />
     </task>
     <servers />
   </component>

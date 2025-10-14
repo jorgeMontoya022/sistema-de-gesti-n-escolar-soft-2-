@@ -11,7 +11,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/proyectoingsoft2/view/main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Gestión de cupos");
+        stage.setTitle("Panel principal");
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
