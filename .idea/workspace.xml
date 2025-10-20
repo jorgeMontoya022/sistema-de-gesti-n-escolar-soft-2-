@@ -4,11 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef616254-7090-4289-8205-8a56c173bf2b" name="Changes" comment="" />
+    <list default="true" id="ef616254-7090-4289-8205-8a56c173bf2b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/ReservaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/reservas/FactoryGestionReservas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/reservas/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/acudiente-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/estudiante-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/reservas-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/AcudienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/AcudienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/CuposController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/CuposController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/EstudianteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/MatriculaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/MatriculaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/PagosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/controller/PagosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/Contrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/Contrato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/FactoryGestionContratos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/FactoryGestionContratos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/Matricula.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/contratos/Matricula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/Cupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/Cupo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/FactoryGestionCupos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/FactoryGestionCupos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/ReservaCupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/cupos/ReservaCupo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/pagos/FactoryGestionPagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/pagos/FactoryGestionPagos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/pagos/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/pagos/Pago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Acudiente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Acudiente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Directora.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Directora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/FactoryPersonas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/com/example/proyectoingsoft2/model/personas/FactoryPersonas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/cupos-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/cupos-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/matricula-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/matricula-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/pagos-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto-ing-soft-2/src/main/resources/com/example/proyectoingsoft2/view/pagos-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,20 +63,27 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3425p4AQXxhlfULL5ye4f9I5W0S" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainApp.executor": "Run",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -45,7 +92,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760399006010</updated>
-      <workItem from="1760399008102" duration="1224000" />
+      <workItem from="1760399008102" duration="1345000" />
+      <workItem from="1760577461631" duration="1597000" />
+      <workItem from="1760925711803" duration="12347000" />
     </task>
     <servers />
   </component>

@@ -11,6 +11,16 @@ import javafx.stage.Stage;
 public class MainController {
 
     @FXML
+    private void irAEstudiantes(ActionEvent event) {
+        cambiarEscena(event, "/com/example/proyectoingsoft2/view/estudiante-view.fxml", "Gestión de Estudiantes");
+    }
+
+    @FXML
+    private void irAAcudientes(ActionEvent event) {
+        cambiarEscena(event, "/com/example/proyectoingsoft2/view/acudiente-view.fxml", "Gestión de Acudientes");
+    }
+
+    @FXML
     private void irACupos(ActionEvent event) {
         cambiarEscena(event, "/com/example/proyectoingsoft2/view/cupos-view.fxml", "Gestión de Cupos");
     }
@@ -21,8 +31,13 @@ public class MainController {
     }
 
     @FXML
-    private void irAContratos(ActionEvent event) {
-        cambiarEscena(event, "/com/example/proyectoingsoft2/view/contratos-view.fxml", "Gestión de Contratos");
+    private void irAPagos(ActionEvent event) {
+        cambiarEscena(event, "/com/example/proyectoingsoft2/view/pagos-view.fxml", "Gestión de Pagos");
+    }
+
+    @FXML
+    private void irAReservas(ActionEvent event) {
+        cambiarEscena(event, "/com/example/proyectoingsoft2/view/reservas-view.fxml", "Gestión reservas" );
     }
 
     @FXML
@@ -30,10 +45,7 @@ public class MainController {
         System.exit(0);
     }
 
-    /**
-     * Cambia la escena actual sin crear nuevas ventanas
-     */
-    private void cambiarEscena(ActionEvent actionEvent,String nameFileFxml, String titleWindow) {
+    private void cambiarEscena(ActionEvent actionEvent, String nameFileFxml, String titleWindow) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nameFileFxml));
             Parent root = loader.load();
@@ -42,7 +54,6 @@ public class MainController {
             stage.setScene(scene);
             stage.setTitle(titleWindow);
             stage.setMaximized(true);
-
             stage.show();
 
             closeWindow(actionEvent);
@@ -55,5 +66,4 @@ public class MainController {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
     }
-
 }

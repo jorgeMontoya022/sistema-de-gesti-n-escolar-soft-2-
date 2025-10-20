@@ -3,36 +3,37 @@ package com.example.proyectoingsoft2.model.pagos;
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- * Pago con campos según el diagrama: idPago, monto, fechaPago, estado, metodoPago, comprobante, descripcion
- */
 public class Pago {
     private long idPago;
+    private long idMatricula;
     private double monto;
     private LocalDate fechaPago;
-    private String estado; // p. ej. PENDIENTE, COMPLETADO, RECHAZADO
-    private String metodoPago;
-    private String comprobante; // ruta o identificador del comprobante
+    private String estado; // PENDIENTE, COMPLETADO, RECHAZADO, REEMBOLSADO
+    private String metodoPago; // EFECTIVO, TRANSFERENCIA, TARJETA, PSE, CUOTAS
+    private String numeroTransaccion;
+    private String comprobante;
     private String descripcion;
-
-    // opcional: vinculación a matricula/contrato (no incluida por simplicidad)
-    private long referenciaId; // id de la entidad a la que se aplica (matricula, contrato, etc.)
-    private String referenciaTipo; // e.g., "MATRICULA"
+    private LocalDate fechaReembolso;
 
     public Pago() {}
 
-    public Pago(long idPago, double monto, LocalDate fechaPago, String estado, String metodoPago, String comprobante, String descripcion) {
+    public Pago(long idPago, long idMatricula, double monto, String metodoPago, String descripcion) {
         this.idPago = idPago;
+        this.idMatricula = idMatricula;
         this.monto = monto;
-        this.fechaPago = fechaPago;
-        this.estado = estado;
+        this.fechaPago = LocalDate.now();
+        this.estado = "PENDIENTE";
         this.metodoPago = metodoPago;
-        this.comprobante = comprobante;
         this.descripcion = descripcion;
+        this.numeroTransaccion = "TRX-" + idPago + "-" + System.currentTimeMillis();
+        this.comprobante = "CPR-" + idPago + "-" + System.currentTimeMillis();
     }
 
     public long getIdPago() { return idPago; }
     public void setIdPago(long idPago) { this.idPago = idPago; }
+
+    public long getIdMatricula() { return idMatricula; }
+    public void setIdMatricula(long idMatricula) { this.idMatricula = idMatricula; }
 
     public double getMonto() { return monto; }
     public void setMonto(double monto) { this.monto = monto; }
@@ -46,17 +47,17 @@ public class Pago {
     public String getMetodoPago() { return metodoPago; }
     public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
 
+    public String getNumeroTransaccion() { return numeroTransaccion; }
+    public void setNumeroTransaccion(String numeroTransaccion) { this.numeroTransaccion = numeroTransaccion; }
+
     public String getComprobante() { return comprobante; }
     public void setComprobante(String comprobante) { this.comprobante = comprobante; }
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public long getReferenciaId() { return referenciaId; }
-    public void setReferenciaId(long referenciaId) { this.referenciaId = referenciaId; }
-
-    public String getReferenciaTipo() { return referenciaTipo; }
-    public void setReferenciaTipo(String referenciaTipo) { this.referenciaTipo = referenciaTipo; }
+    public LocalDate getFechaReembolso() { return fechaReembolso; }
+    public void setFechaReembolso(LocalDate fechaReembolso) { this.fechaReembolso = fechaReembolso; }
 
     @Override
     public boolean equals(Object o) {
@@ -67,16 +68,11 @@ public class Pago {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(idPago);
-    }
+    public int hashCode() { return Objects.hash(idPago); }
 
     @Override
     public String toString() {
-        return "Pago{" + "idPago=" + idPago + ", monto=" + monto +
-                ", fechaPago=" + fechaPago + ", estado='" + estado + '\'' +
-                ", metodoPago='" + metodoPago + '\'' + ", comprobante='" + comprobante + '\'' +
-                ", descripcion='" + descripcion + '\'' + ", referenciaTipo='" + referenciaTipo + '\'' +
-                ", referenciaId=" + referenciaId + '}';
+        return "Pago{" + "ID=" + idPago + ", Monto=" + monto + ", Estado=" + estado +
+                ", Transacción=" + numeroTransaccion + "}";
     }
 }

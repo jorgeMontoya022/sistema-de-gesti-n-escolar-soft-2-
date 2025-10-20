@@ -7,7 +7,9 @@ module com.example.proyectoingsoft2 {
     exports com.example.proyectoingsoft2;
 
     exports com.example.proyectoingsoft2.controller;
+    opens com.example.proyectoingsoft2.model.personas to javafx.base;
     opens com.example.proyectoingsoft2.model.cupos to javafx.base;
     opens com.example.proyectoingsoft2.model.contratos to javafx.base;
+    opens com.example.proyectoingsoft2.model.pagos to javafx.base;
 
 }

@@ -17,67 +17,74 @@ import javafx.stage.Stage;
 
 public class CuposController {
 
-    // ===== INYECCIONES FXML =====
     @FXML
-    private TextField txtGrado;
-
+    private ComboBox<String> cbGrado;
+    @FXML
+    private ComboBox<String> cbJornada;
     @FXML
     private TextField txtValor;
-
     @FXML
-    private ComboBox<String> cbEstado;
-
+    private TextField txtCuposDisponibles;
     @FXML
     private TableView<Cupo> tablaCupos;
-
     @FXML
     private TableColumn<Cupo, Long> colId;
-
     @FXML
     private TableColumn<Cupo, String> colGrado;
-
+    @FXML
+    private TableColumn<Cupo, String> colJornada;
     @FXML
     private TableColumn<Cupo, Double> colValor;
-
+    @FXML
+    private TableColumn<Cupo, Integer> colDisponibles;
+    @FXML
+    private TableColumn<Cupo, Integer> colOcupados;
     @FXML
     private TableColumn<Cupo, String> colEstado;
-
     @FXML
     private Label lblTotal;
-
+    @FXML
+    private Label lblTotalCupos;
     @FXML
     private Button btnAgregar;
-
     @FXML
     private Button btnLimpiar;
-
     @FXML
     private Button btnEditar;
-
     @FXML
     private Button btnEliminar;
-
     @FXML
     private Button btnVolver;
 
-    // ===== VARIABLES INTERNAS =====
     private FactoryGestionCupos factory;
     private ObservableList<Cupo> datosCupos;
 
     @FXML
     public void initialize() {
-        factory = new FactoryGestionCupos();
+        factory = FactoryGestionCupos.getInstance();
         datosCupos = FXCollections.observableArrayList();
 
-        // Configurar tabla
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // Configurar columnas
+        colId.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleLongProperty(cellData.getValue().getId()).asObject());
         colGrado.setCellValueFactory(new PropertyValueFactory<>("grado"));
+        colJornada.setCellValueFactory(new PropertyValueFactory<>("jornada"));
         colValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        colDisponibles.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getCuposDisponibles()).asObject());
+        colOcupados.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getCuposOcupados()).asObject());
         colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
         // Configurar ComboBox
-        cbEstado.setItems(FXCollections.observableArrayList("DISPONIBLE", "RESERVADO", "OCUPADO"));
-        cbEstado.setValue("DISPONIBLE");
+        cbGrado.setItems(FXCollections.observableArrayList(
+                "Pre-jardín", "Jardín", "Transición", "Primero", "Segundo",
+                "Tercero", "Cuarto", "Quinto"
+        ));
+        cbGrado.setValue("Primero");
+
+        cbJornada.setItems(FXCollections.observableArrayList("MAÑANA", "TARDE", "COMPLETA"));
+        cbJornada.setValue("MAÑANA");
 
         // Configurar eventos
         btnAgregar.setOnAction(event -> agregarCupo());
@@ -86,30 +93,31 @@ public class CuposController {
         btnEliminar.setOnAction(event -> eliminarCupoSeleccionado());
         btnVolver.setOnAction(event -> volverAlMenu());
 
-        // Cargar datos iniciales
         cargarDatosCupos();
     }
 
-    // ===== CRUD OPERATIONS =====
-
     private void agregarCupo() {
         try {
-            if (txtGrado.getText().isEmpty() || txtValor.getText().isEmpty()) {
-                mostrarAlerta("Error", "Por favor complete todos los campos", Alert.AlertType.WARNING);
+            if (txtValor.getText().isEmpty() || txtCuposDisponibles.getText().isEmpty()) {
+                mostrarAlerta("Error", "Complete todos los campos", Alert.AlertType.WARNING);
                 return;
             }
 
-            String grado = txtGrado.getText();
             double valor = Double.parseDouble(txtValor.getText());
-            String estado = cbEstado.getValue();
+            int disponibles = Integer.parseInt(txtCuposDisponibles.getText());
 
-            factory.createCupo(estado, valor, grado);
+            Cupo cupo = factory.createCupo(
+                    cbGrado.getValue(),
+                    valor,
+                    cbJornada.getValue(),
+                    disponibles
+            );
+
             cargarDatosCupos();
             limpiarFormulario();
-
             mostrarAlerta("Éxito", "Cupo agregado correctamente", Alert.AlertType.INFORMATION);
         } catch (NumberFormatException e) {
-            mostrarAlerta("Error", "Ingrese un valor numérico válido", Alert.AlertType.ERROR);
+            mostrarAlerta("Error", "Ingrese valores numéricos válidos", Alert.AlertType.ERROR);
         }
     }
 
@@ -119,7 +127,6 @@ public class CuposController {
             mostrarAlerta("Advertencia", "Seleccione un cupo para editar", Alert.AlertType.WARNING);
             return;
         }
-
         ventanaEdicion(seleccionado);
     }
 
@@ -134,37 +141,34 @@ public class CuposController {
         Label lblEditar = new Label("Editar Cupo #" + cupo.getId());
         lblEditar.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c3e50;");
 
-        Label lbl1 = new Label("Grado:");
-        lbl1.setStyle("-fx-font-weight: bold;");
-        TextField edtGrado = new TextField(cupo.getGrado());
-        edtGrado.setStyle("-fx-padding: 8; -fx-border-color: #3498db; -fx-border-radius: 3;");
+        ComboBox<String> edtGrado = new ComboBox<>();
+        edtGrado.setItems(FXCollections.observableArrayList(
+                "Pre-jardín", "Jardín", "Transición", "Primero", "Segundo",
+                "Tercero", "Cuarto", "Quinto"
+        ));
+        edtGrado.setValue(cupo.getGrado());
 
-        Label lbl2 = new Label("Valor ($):");
-        lbl2.setStyle("-fx-font-weight: bold;");
+        ComboBox<String> edtJornada = new ComboBox<>();
+        edtJornada.setItems(FXCollections.observableArrayList("MAÑANA", "TARDE", "COMPLETA"));
+        edtJornada.setValue(cupo.getJornada());
+
         TextField edtValor = new TextField(String.valueOf(cupo.getValor()));
-        edtValor.setStyle("-fx-padding: 8; -fx-border-color: #3498db; -fx-border-radius: 3;");
+        TextField edtDisponibles = new TextField(String.valueOf(cupo.getCuposDisponibles()));
 
-        Label lbl3 = new Label("Estado:");
-        lbl3.setStyle("-fx-font-weight: bold;");
-        ComboBox<String> edtEstado = new ComboBox<>();
-        edtEstado.setItems(FXCollections.observableArrayList("DISPONIBLE", "RESERVADO", "OCUPADO"));
-        edtEstado.setValue(cupo.getEstado());
-        edtEstado.setStyle("-fx-padding: 8; -fx-border-color: #3498db; -fx-border-radius: 3;");
-
-        // Botones
         Button btnGuardar = new Button("GUARDAR");
         btnGuardar.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: bold;");
         btnGuardar.setOnAction(e -> {
             try {
-                cupo.setGrado(edtGrado.getText());
+                cupo.setGrado(edtGrado.getValue());
+                cupo.setJornada(edtJornada.getValue());
                 cupo.setValor(Double.parseDouble(edtValor.getText()));
-                cupo.setEstado(edtEstado.getValue());
+                cupo.setCuposDisponibles(Integer.parseInt(edtDisponibles.getText()));
                 factory.updateCupo(cupo);
                 cargarDatosCupos();
                 dialog.close();
                 mostrarAlerta("Éxito", "Cupo actualizado correctamente", Alert.AlertType.INFORMATION);
             } catch (NumberFormatException ex) {
-                mostrarAlerta("Error", "Ingrese un valor numérico válido", Alert.AlertType.ERROR);
+                mostrarAlerta("Error", "Ingrese valores numéricos válidos", Alert.AlertType.ERROR);
             }
         });
 
@@ -172,17 +176,20 @@ public class CuposController {
         btnCancelar.setStyle("-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: bold;");
         btnCancelar.setOnAction(e -> dialog.close());
 
+        HBox botones = new HBox(10);
+        botones.setAlignment(javafx.geometry.Pos.CENTER);
+        botones.getChildren().addAll(btnGuardar, btnCancelar);
+
         vbox.getChildren().addAll(
-                lblEditar,
-                new Separator(),
-                lbl1, edtGrado,
-                lbl2, edtValor,
-                lbl3, edtEstado,
-                new Separator(),
-                new HBox(10, btnGuardar, btnCancelar)
+                lblEditar, new Separator(),
+                new Label("Grado:"), edtGrado,
+                new Label("Jornada:"), edtJornada,
+                new Label("Valor ($):"), edtValor,
+                new Label("Cupos Disponibles:"), edtDisponibles,
+                new Separator(), botones
         );
 
-        Scene scene = new Scene(vbox, 350, 350);
+        Scene scene = new Scene(vbox, 400, 380);
         dialog.setScene(scene);
         dialog.showAndWait();
     }
@@ -197,7 +204,7 @@ public class CuposController {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Confirmar Eliminación");
         alerta.setHeaderText("¿Está seguro?");
-        alerta.setContentText("ID: " + seleccionado.getId() + " - Grado: " + seleccionado.getGrado());
+        alerta.setContentText("Se eliminará el cupo de " + seleccionado.getGrado() + " (" + seleccionado.getJornada() + ")");
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             factory.deleteCupo(seleccionado.getId());
@@ -211,12 +218,18 @@ public class CuposController {
         datosCupos.addAll(factory.listCupos());
         tablaCupos.setItems(datosCupos);
         lblTotal.setText("Total Cupos: " + datosCupos.size());
+
+        long cuposDisponiblesCount = datosCupos.stream()
+                .filter(Cupo::hayDisponibilidad)
+                .count();
+        lblTotalCupos.setText("Cupos Disponibles: " + cuposDisponiblesCount);
     }
 
     private void limpiarFormulario() {
-        txtGrado.clear();
         txtValor.clear();
-        cbEstado.setValue("DISPONIBLE");
+        txtCuposDisponibles.clear();
+        cbGrado.setValue("Primero");
+        cbJornada.setValue("MAÑANA");
         tablaCupos.getSelectionModel().clearSelection();
     }
 
@@ -231,21 +244,17 @@ public class CuposController {
     @FXML
     private void volverAlMenu() {
         try {
-
-
-            // Cargar la vista del menú principal
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectoingsoft2/view/main-view.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setMaximized(true);
-
             stage.setTitle("Menú Principal");
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.show();
 
+            Stage currentStage = (Stage) btnVolver.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

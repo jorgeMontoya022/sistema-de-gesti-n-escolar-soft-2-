@@ -8,6 +8,8 @@ public class Acudiente {
     private String documento;
     private String telefono;
     private String correo;
+    private String parentesco; // Padre, Madre, Abuelo, Tío, Tutor, etc.
+    private String direccion;
 
     public Acudiente() {}
 
@@ -17,6 +19,18 @@ public class Acudiente {
         this.documento = documento;
         this.telefono = telefono;
         this.correo = correo;
+        this.parentesco = "Padre/Madre";
+    }
+
+    public Acudiente(long id, String nombre, String documento, String telefono, String correo,
+                     String parentesco, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.documento = documento;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.parentesco = parentesco;
+        this.direccion = direccion;
     }
 
     public long getId() { return id; }
@@ -34,6 +48,12 @@ public class Acudiente {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
+    public String getParentesco() { return parentesco; }
+    public void setParentesco(String parentesco) { this.parentesco = parentesco; }
+
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,5 +66,5 @@ public class Acudiente {
     public int hashCode() { return Objects.hash(id); }
 
     @Override
-    public String toString() { return nombre + " (" + documento + ")"; }
+    public String toString() { return nombre + " (" + parentesco + ")"; }
 }
