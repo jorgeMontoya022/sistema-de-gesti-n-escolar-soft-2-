@@ -16,35 +16,34 @@
     </top>
 
     <center>
-        <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent;">
             <HBox spacing="15" style="-fx-padding: 15;">
 
-                <VBox spacing="10" style="-fx-border-color: #8e44ad; -fx-border-radius: 5; -fx-padding: 15; -fx-background-color: white; -fx-border-width: 2;" minWidth="340" maxWidth="340">
+                <VBox spacing="12" style="-fx-border-color: #8e44ad; -fx-border-radius: 5; -fx-padding: 15; -fx-background-color: white; -fx-border-width: 2;" minWidth="340" maxWidth="340">
                     <Label text="Nueva Reserva de Cupo" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
                     <Separator/>
 
-                    <Label text="Estudiante:" style="-fx-font-weight: bold;"/>
-                    <ComboBox fx:id="cbEstudiante" prefWidth="220" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
+                    <Label text="Estudiante:" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #2c3e50;"/>
+                    <ComboBox fx:id="cbEstudiante" prefWidth="300" promptText="Seleccione un estudiante" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
 
-                    <Label text="Grado Solicitado:" style="-fx-font-weight: bold;"/>
-                    <ComboBox fx:id="cbGrado" prefWidth="220" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
+                    <Label text="Grado Solicitado:" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #2c3e50;"/>
+                    <ComboBox fx:id="cbGrado" prefWidth="300" promptText="Seleccione el grado" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
 
-                    <Label text="Jornada Preferida:" style="-fx-font-weight: bold;"/>
-                    <ComboBox fx:id="cbJornada" prefWidth="220" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
+                    <Label text="Jornada Preferida:" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #2c3e50;"/>
+                    <ComboBox fx:id="cbJornada" prefWidth="300" promptText="Seleccione la jornada" style="-fx-padding: 8; -fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
 
-                    <Label fx:id="lblDisponibilidadCupo" text="" style="-fx-font-size: 11; -fx-padding: 8; -fx-background-color: #ecf0f1; -fx-border-radius: 3;" wrapText="true" minHeight="50"/>
+                    <Label fx:id="lblDisponibilidadCupo" text="Seleccione un grado para ver disponibilidad"
+                           style="-fx-font-size: 11; -fx-padding: 10; -fx-background-color: #ecf0f1; -fx-border-radius: 3; -fx-text-fill: #34495e;"
+                           wrapText="true" minHeight="50"/>
 
-                    <Label text="Observaciones:" style="-fx-font-weight: bold;"/>
+                    <Label text="Observaciones:" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #2c3e50;"/>
                     <TextArea fx:id="txtObservaciones" promptText="Notas adicionales (opcional)" wrapText="true" prefRowCount="3" style="-fx-border-color: #8e44ad; -fx-border-radius: 3;"/>
 
                     <Separator/>
 
                     <Label text="ℹ️ INFORMACIÓN IMPORTANTE" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
-                    <Label text="• La reserva es válida por 15 días
-• Debe completar la matrícula antes de la expiración
-• Solo puede tener una reserva activa por estudiante
-• Recibirá un comprobante digital"
-                           style="-fx-font-size: 10; -fx-text-fill: #7f8c8d;" wrapText="true"/>
+                    <Label text="• La reserva es válida por 15 días&#10;• Debe completar la matrícula antes de la expiración&#10;• Solo puede tener una reserva activa por estudiante&#10;• Recibirá un comprobante digital"
+                           style="-fx-font-size: 10; -fx-text-fill: #7f8c8d; -fx-padding: 5;" wrapText="true"/>
 
                     <Separator/>
 
@@ -54,14 +53,14 @@
                     </HBox>
 
                     <Separator/>
-                    <Label text="Acciones:" style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Acciones sobre Reserva Seleccionada:" style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
 
                     <Button fx:id="btnConfirmar" text="✓ CONFIRMAR" style="-fx-font-weight: bold; -fx-padding: 8 15; -fx-font-size: 10; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-max-width: 320;"/>
                     <Button fx:id="btnCancelar" text="✗ CANCELAR" style="-fx-font-weight: bold; -fx-padding: 8 15; -fx-font-size: 10; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-max-width: 320;"/>
                     <Button fx:id="btnImprimir" text="🖨️ IMPRIMIR COMPROBANTE" style="-fx-font-weight: bold; -fx-padding: 8 15; -fx-font-size: 10; -fx-background-color: #3498db; -fx-text-fill: white; -fx-max-width: 320;"/>
                 </VBox>
 
-                <VBox spacing="10" style="-fx-border-color: #8e44ad; -fx-border-radius: 5; -fx-padding: 15; -fx-background-color: white; -fx-border-width: 2;" HBox.hgrow="ALWAYS">
+                <VBox spacing="10" style="-fx-border-color: #8e44ad; -fx-border-radius: 5; -fx-padding: 15; -fx-background-color: white; -fx-border-width: 2;" HBox.hgrow="ALWAYS" minWidth="500">
 
                     <Label text="Listado de Reservas" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
 
@@ -72,7 +71,7 @@
                         <Label text="🟢 Confirmada" style="-fx-font-size: 10; -fx-background-color: #d4edda; -fx-padding: 3 6; -fx-text-fill: #155724;"/>
                     </HBox>
 
-                    <TableView fx:id="tablaReservas" style="-fx-font-size: 10;" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="tablaReservas" style="-fx-font-size: 10;" prefHeight="400" VBox.vgrow="ALWAYS">
                         <columnResizePolicy>
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                         </columnResizePolicy>

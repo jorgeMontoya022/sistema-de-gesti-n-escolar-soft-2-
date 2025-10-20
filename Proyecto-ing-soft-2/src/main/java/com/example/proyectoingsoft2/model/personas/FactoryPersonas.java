@@ -19,6 +19,32 @@ public class FactoryPersonas {
         estudiantes.put(id, e);
         return e;
     }
+    public FactoryPersonas() {
+        initializeData();
+    }
+
+    private void initializeData() {
+        // Crear acudiente de prueba
+        Acudiente acudiente = new Acudiente();
+        acudiente.setId(idGenAcudiente.getAndIncrement());
+        acudiente.setNombre("Jorge Mancho");
+        acudiente.setDocumento("15327313");
+        acudiente.setTelefono("3123456789");
+        acudiente.setCorreo("jorge@gmail.com");
+        acudiente.setParentesco("Padre");
+        acudiente.setDireccion("Quimbaya, Quindío");
+        acudientes.put(acudiente.getId(), acudiente);
+
+        // Crear estudiante de prueba
+        Estudiante estudiante1 = new Estudiante();
+        estudiante1.setId(idGenEstudiante.getAndIncrement());
+        estudiante1.setNombre("Juan Cabrera");
+        estudiante1.setDocumento("1097032932");
+        estudiante1.setGrado("Primero");
+        estudiante1.setAcudiente(acudiente);
+        estudiantes.put(estudiante1.getId(), estudiante1);
+
+    }
 
     public static Optional<Estudiante> findEstudianteById(long id) {
         return Optional.ofNullable(estudiantes.get(id));

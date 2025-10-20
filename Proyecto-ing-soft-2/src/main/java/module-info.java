@@ -11,5 +11,6 @@ module com.example.proyectoingsoft2 {
     opens com.example.proyectoingsoft2.model.cupos to javafx.base;
     opens com.example.proyectoingsoft2.model.contratos to javafx.base;
     opens com.example.proyectoingsoft2.model.pagos to javafx.base;
+    opens com.example.proyectoingsoft2.model.reservas to javafx.base;
 
 }

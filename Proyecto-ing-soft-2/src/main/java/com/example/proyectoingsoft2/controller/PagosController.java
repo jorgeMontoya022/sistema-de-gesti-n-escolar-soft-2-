@@ -69,7 +69,7 @@ public class PagosController {
 
     @FXML
     public void initialize() {
-        factoryPagos = new FactoryGestionPagos();
+        factoryPagos = FactoryGestionPagos.getInstance();
         factoryContratos = FactoryGestionContratos.getInstance();
         datosPagos = FXCollections.observableArrayList();
         matriculas = FXCollections.observableArrayList();

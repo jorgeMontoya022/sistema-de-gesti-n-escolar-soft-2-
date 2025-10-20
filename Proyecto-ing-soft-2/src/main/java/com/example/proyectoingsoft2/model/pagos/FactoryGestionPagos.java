@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class FactoryGestionPagos {
     private final AtomicLong idGenPago = new AtomicLong(8000);
     private final Map<Long, Pago> pagos = new LinkedHashMap<>();
+    private static FactoryGestionPagos instance;
 
     // ===== CRUD PAGO =====
     public Pago createPago(long idMatricula, double monto, String metodoPago, String descripcion) {
@@ -15,6 +16,17 @@ public class FactoryGestionPagos {
         Pago p = new Pago(id, idMatricula, monto, metodoPago, descripcion);
         pagos.put(id, p);
         return p;
+    }
+
+    private FactoryGestionPagos() {
+
+    }
+
+    public static FactoryGestionPagos getInstance() {
+        if (instance == null) {
+            instance = new FactoryGestionPagos();
+        }
+        return instance;
     }
 
     public Optional<Pago> findPagoById(long id) {
